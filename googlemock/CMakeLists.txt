@@ -140,24 +140,24 @@ endif()
 #
 # Install rules
 if(INSTALL_GMOCK)
-  install(TARGETS gmock
-    EXPORT gmockConfigInternal
+  install(TARGETS GMock
+    EXPORT GMockConfigInternal
     RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
     ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
     LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}")
-  install(EXPORT gmockConfigInternal
+  install(EXPORT GMockConfigInternal
     DESTINATION "${INSTALL_CMAKE_DIR}"
-    NAMESPACE googletest_)
-  install(TARGETS gmock_main
-    EXPORT gmock_mainConfigInternal
+    NAMESPACE ${GOOGLETEST_PACKAGE_NAME}_)
+  install(TARGETS GMock_Main
+    EXPORT GMock_MainConfigInternal
     RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
     ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
     LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}")
-  install(EXPORT gmock_mainConfigInternal
+  install(EXPORT GMock_MainConfigInternal
     DESTINATION "${INSTALL_CMAKE_DIR}"
-    NAMESPACE googletest_)
+    NAMESPACE ${GOOGLETEST_PACKAGE_NAME}_)
   set(googletest_install_targets
-    ${googletest_install_targets} gmock gmock_main PARENT_SCOPE)
+    ${googletest_install_targets} GMock GMock_Main PARENT_SCOPE)
 
   install(DIRECTORY "${gmock_SOURCE_DIR}/include/gmock"
     DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")

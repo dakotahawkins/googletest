@@ -27,6 +27,7 @@ else()
 endif()
 
 set(googletest_install_targets)
+set(GOOGLETEST_PACKAGE_NAME GTest)
 if(BUILD_GMOCK)
   add_subdirectory( googlemock )
 elseif(BUILD_GTEST)
@@ -36,15 +37,15 @@ endif()
 if(googletest_install_targets)
   include(CMakePackageConfigHelpers)
   configure_package_config_file(
-    "${CMAKE_CURRENT_LIST_DIR}/cmake/googletestConfig.cmake.in"
-    "${CMAKE_CURRENT_BINARY_DIR}/googletestConfig.cmake"
+    "${CMAKE_CURRENT_LIST_DIR}/cmake/${GOOGLETEST_PACKAGE_NAME}Config.cmake.in"
+    "${CMAKE_CURRENT_BINARY_DIR}/${GOOGLETEST_PACKAGE_NAME}Config.cmake"
     INSTALL_DESTINATION "${INSTALL_CMAKE_DIR}")
   write_basic_package_version_file(
-    ${CMAKE_CURRENT_BINARY_DIR}/googletestConfigVersion.cmake
+    ${CMAKE_CURRENT_BINARY_DIR}/${GOOGLETEST_PACKAGE_NAME}ConfigVersion.cmake
     VERSION "${GOOGLETEST_VERSION}"
     COMPATIBILITY SameMajorVersion)
   install(FILES
-    ${CMAKE_CURRENT_BINARY_DIR}/googletestConfig.cmake
-    ${CMAKE_CURRENT_BINARY_DIR}/googletestConfigVersion.cmake
+    ${CMAKE_CURRENT_BINARY_DIR}/${GOOGLETEST_PACKAGE_NAME}Config.cmake
+    ${CMAKE_CURRENT_BINARY_DIR}/${GOOGLETEST_PACKAGE_NAME}ConfigVersion.cmake
     DESTINATION "${INSTALL_CMAKE_DIR}")
 endif()

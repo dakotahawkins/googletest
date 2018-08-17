@@ -134,24 +134,24 @@ endif()
 #
 # Install rules
 if(INSTALL_GTEST)
-  install(TARGETS gtest
-    EXPORT gtestConfigInternal
+  install(TARGETS GTest
+    EXPORT GTestConfigInternal
     RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
     ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
     LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}")
-  install(EXPORT gtestConfigInternal
+  install(EXPORT GTestConfigInternal
     DESTINATION "${INSTALL_CMAKE_DIR}"
-    NAMESPACE googletest_)
-  install(TARGETS gtest_main
-    EXPORT gtest_mainConfigInternal
+    NAMESPACE ${GOOGLETEST_PACKAGE_NAME}_)
+  install(TARGETS GTest_Main
+    EXPORT GTest_MainConfigInternal
     RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
     ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
     LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}")
-  install(EXPORT gtest_mainConfigInternal
+  install(EXPORT GTest_MainConfigInternal
     DESTINATION "${INSTALL_CMAKE_DIR}"
-    NAMESPACE googletest_)
+    NAMESPACE ${GOOGLETEST_PACKAGE_NAME}_)
   set(googletest_install_targets
-    ${googletest_install_targets} gtest gtest_main PARENT_SCOPE)
+    ${googletest_install_targets} GTest GTest_Main PARENT_SCOPE)
 
   install(DIRECTORY "${gtest_SOURCE_DIR}/include/gtest"
     DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
